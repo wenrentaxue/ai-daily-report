@@ -4,131 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Daily - 2026 年 3 月 11 日</title>
-    <!-- (样式部分与 index_video.html 相同，省略) -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #111827;
-            --bg-card: #1f2937;
-            --bg-modal: #1a2332;
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --accent: #8b5cf6;
-            --accent-pink: #ec4899;
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --border: #374151;
-        }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-        .header { background: rgba(17, 24, 39, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; position: sticky; top: 0; z-index: 100; }
+        :root { --bg-primary: #0a0e1a; --bg-secondary: #111827; --bg-card: #1f2937; --bg-modal: #0f172a; --text-primary: #f9fafb; --text-secondary: #9ca3af; --accent: #8b5cf6; --accent-pink: #f472b6; --accent-cyan: #22d3ee; --accent-green: #10b981; --border: #374151; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        .header { background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; position: sticky; top: 0; z-index: 100; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
         .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-pink), var(--accent)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
         .nav { display: flex; gap: 0.5rem; }
         .nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; }
-        .nav a:hover, .nav a.active { color: var(--accent-pink); background: rgba(236, 72, 153, 0.1); }
+        .nav a:hover { color: var(--accent-pink); background: rgba(236, 72, 153, 0.1); }
         .search-box { position: relative; }
         .search-input { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 1rem 0.5rem 2.5rem; color: var(--text-primary); font-size: 0.875rem; width: 200px; transition: all 0.2s; }
-        .search-input:focus { outline: none; border-color: var(--accent); width: 250px; }
-        .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
-        .hero { max-width: 1400px; margin: 2rem auto; padding: 3rem; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(6, 182, 212, 0.1) 100%); border-radius: 16px; border: 1px solid var(--border); }
+        .search-input:focus { outline: none; border-color: var(--accent); width: 250px; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); }
+        .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; }
+        .hero { max-width: 1400px; margin: 2rem auto; padding: 3rem; background: linear-gradient(135deg, rgba(244, 114, 182, 0.15) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(34, 211, 238, 0.1) 100%); border-radius: 16px; border: 1px solid var(--border); }
         .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--accent-pink), var(--accent)); color: white; padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
         .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.3; }
         .hero-date { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 1rem; }
-        .hero-meta { display: flex; align-items: center; gap: 1.5rem; color: var(--text-secondary); font-size: 0.875rem; }
+        .hero-meta { display: flex; align-items: center; gap: 1.5rem; color: var(--text-secondary); font-size: 0.875rem; flex-wrap: wrap; }
         .hero-meta-item { display: flex; align-items: center; gap: 0.5rem; }
         .hero-meta-icon { width: 20px; height: 20px; background: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
-        .stats { max-width: 1400px; margin: 0 auto 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+        .stats { max-width: 1400px; margin: 0 auto 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
         .stat-card { text-align: center; padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border); }
         .stat-number { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-pink), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .stat-label { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem; }
-        .stat-action { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--accent-pink), var(--accent)); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.875rem; border: none; cursor: pointer; transition: transform 0.2s; }
-        .stat-action:hover { transform: translateY(-2px); }
+        .stat-action { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: linear-gradient(135deg, #f472b6, #a855f7, #22d3ee); color: white; padding: 1rem 2rem; border-radius: 12px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(244, 114, 182, 0.4); margin-top: 0.5rem; }
+        .stat-action:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(244, 114, 182, 0.6); }
         .category-section { max-width: 1400px; margin: 0 auto 4rem; }
         .category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border); }
         .category-icon { font-size: 1.25rem; }
         .category-title { font-size: 1.25rem; font-weight: 600; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; }
-        .news-card { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--border); cursor: pointer; }
-        .news-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .card-image { position: relative; height: 200px; overflow: hidden; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-        .news-card:hover .card-image img { transform: scale(1.05); }
-        .card-tag { position: absolute; top: 1rem; left: 1rem; background: linear-gradient(135deg, var(--accent-cyan), var(--accent)); color: white; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .news-card { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; transition: all 0.3s; border: 1px solid var(--border); cursor: pointer; }
+        .news-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-color: var(--accent); }
+        .card-image { position: relative; height: 180px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .news-card:hover .card-image img { transform: scale(1.1); }
+        .card-tag { position: absolute; top: 1rem; left: 1rem; background: linear-gradient(135deg, var(--accent-cyan), var(--accent)); color: white; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 600; }
         .card-content { padding: 1.25rem; }
-        .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .card-summary { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8rem; }
+        .card-summary { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
         .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border); }
         .card-source { color: var(--text-secondary); font-size: 0.75rem; }
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 1000; }
+        .read-more { color: var(--accent-pink); text-decoration: none; font-size: 0.75rem; font-weight: 600; }
+        .read-more:hover { color: var(--accent); }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 1000; }
         .modal-overlay.active { display: flex; }
-        .modal { background: var(--bg-modal); border-radius: 16px; width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid var(--border); }
-        .modal-title { display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem; font-weight: 600; }
+        .modal { background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95)); border-radius: 20px; width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto; border: 1px solid rgba(139, 92, 246, 0.3); box-shadow: 0 25px 80px rgba(0,0,0,0.7); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
+        .modal-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem; font-weight: 700; }
+        .modal-title-icon { font-size: 1.5rem; }
         .modal-date { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.25rem; }
-        .modal-close { background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; transition: color 0.2s; }
-        .modal-close:hover { color: var(--text-primary); }
-        .modal-body { padding: 1.5rem; }
-        .summary-section { background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
-        .summary-title { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--accent-pink); margin-bottom: 0.75rem; }
-        .summary-text { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.7; }
-        .category-summary { margin-bottom: 1.5rem; }
-        .category-summary-title { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-        .summary-card { background: var(--bg-secondary); border-left: 3px solid var(--accent-pink); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
-        .summary-card-text { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.75rem; }
+        .modal-close { background: rgba(55, 65, 81, 0.5); border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; padding: 0.5rem 0.75rem; border-radius: 6px; }
+        .modal-close:hover { background: rgba(244, 114, 182, 0.2); color: var(--accent-pink); transform: rotate(90deg); }
+        .modal-body { padding: 0; }
+        .summary-section { margin: 0 2rem 2rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(244, 114, 182, 0.15)); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 16px; padding: 1.5rem; }
+        .summary-title { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 700; color: var(--accent-pink); margin-bottom: 1rem; }
+        .summary-text { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.9; text-align: justify; }
+        .category-summary { margin: 0 2rem 1.5rem; padding: 1.5rem; background: rgba(30, 41, 59, 0.5); border-radius: 12px; border: 1px solid var(--border); }
+        .category-summary-title { display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--accent); }
+        .summary-card { background: rgba(15, 23, 42, 0.5); border-left: 4px solid var(--accent-pink); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+        .summary-card-text { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.75rem; line-height: 1.7; }
+        .summary-card-list { list-style: none; margin: 0.75rem 0; }
+        .summary-card-list li { color: var(--text-secondary); font-size: 0.85rem; padding: 0.35rem 0; padding-left: 1.25rem; position: relative; }
+        .summary-card-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-pink); }
         .summary-card-source { color: var(--text-secondary); font-size: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
-        .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1.5rem; border-top: 1px solid var(--border); }
-        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.875rem; border: none; cursor: pointer; transition: all 0.2s; }
-        .btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border); }
+        .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1.5rem 2rem; border-top: 1px solid var(--border); background: rgba(15, 23, 42, 0.8); border-radius: 0 0 20px 20px; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.875rem; border: none; cursor: pointer; }
+        .btn-secondary { background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border); }
         .btn-secondary:hover { background: var(--bg-card); }
         .btn-primary { background: linear-gradient(135deg, var(--accent-pink), var(--accent)); color: white; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); }
         .footer { background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-secondary); margin-top: 4rem; }
-        @media (max-width: 768px) { .header { padding: 0.75rem 1rem; } .nav { display: none; } .hero { padding: 1.5rem; margin: 1rem; } .hero h1 { font-size: 1.5rem; } .stats { grid-template-columns: repeat(2, 1fr); padding: 0 1rem; } .cards-grid { grid-template-columns: 1fr; padding: 0 1rem; } }
+        @media (max-width: 768px) { .header { padding: 0.75rem 1rem; } .nav { display: none; } .hero { padding: 1.5rem; } .stats { grid-template-columns: repeat(2, 1fr); } .cards-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
-            <a href="/" class="logo">
-                <div class="logo-icon">🚀</div>
-                AI Daily
-            </a>
-            <nav class="nav">
-                <a href="#" class="active">首页</a>
-                <a href="#ai">AI</a>
-                <a href="#funding">融资</a>
-                <a href="#ecommerce">电商</a>
-                <a href="#startup">创业</a>
-                <a href="#web3">Web3</a>
-                <a href="#energy">能源</a>
-            </nav>
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" id="searchInput" placeholder="搜索...">
-            </div>
+            <a href="/" class="logo"><div class="logo-icon">🚀</div>AI Daily</a>
+            <nav class="nav"><a href="#" class="active">首页</a><a href="#ai">AI</a><a href="#funding">融资</a><a href="#ecommerce">电商</a><a href="#startup">创业</a><a href="#web3">Web3</a><a href="#energy">能源</a></nav>
+            <div class="search-box"><span class="search-icon">🔍</span><input type="text" class="search-input" id="searchInput" placeholder="搜索新闻..."></div>
         </div>
     </header>
-    
     <section class="hero">
         <div class="hero-tag">📋 今日日报</div>
         <h1>AI 行业情报日报</h1>
-        <p class="hero-date">2026 年 3 月 11 日 Wednesday</p>
-        <div class="hero-meta">
-            <div class="hero-meta-item"><div class="hero-meta-icon">✓</div>AI 智能助手</div>
-            <div class="hero-meta-item">30 条精选资讯</div>
-            <div class="hero-meta-item">6 大领域</div>
-        </div>
+        <p class="hero-date">2026 年 3 月 11 日</p>
+        <div class="hero-meta"><div class="hero-meta-item"><div class="hero-meta-icon">✓</div>AI 智能助手</div><div class="hero-meta-item">30 条精选资讯</div><div class="hero-meta-item">6 大领域</div></div>
     </section>
-    
     <section class="stats">
         <div class="stat-card"><div class="stat-number">30</div><div class="stat-label">今日资讯</div></div>
         <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">分类板块</div></div>
         <div class="stat-card"><div class="stat-number">24h</div><div class="stat-label">实时更新</div></div>
-        <div class="stat-card"><button class="stat-action" onclick="openModal()">📋 日报汇总</button></div>
+        <div class="stat-card"><button class="stat-action" onclick="openModal()">📋 查看日报汇总</button></div>
     </section>
-    
     
         <section class="category-section" id="ai">
             <div class="category-header">
@@ -137,79 +109,81 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.wsj.com/tech/ai?gaa_at=eafs&gaa_n=AWEtsqczyXp09ZvHMztWdUMegA2ZXdsdoXtYgO5rKCMito2T1QEwZqbR9uLs&gaa_ts=69b18be7&gaa_sig=KYGiBCHSx1hWUS0hfI7VqocJDXlvbj7tw8E9aCVdGsBlJHJqfqqKRD7gKyrXlDgd6-etCbZ82eM2fw5YvUWAfg%3D%3D')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">ARTIFICIAL</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">AI News | Latest News | Insights Powering AI-Driven Business Growth</h3>
-                        <p class="card-summary">AI News delivers the latest updates in artificial intelligence, machine learning, deep learning, enterprise AI, and emerging tech worldwide....</p>
-                        <div class="card-footer">
-                            <span class="card-source">📎 artificialintelligence-news</span>
-                        </div>
-                    </div>
-                </article>
-            
-                <article class="news-card" onclick="openModal()">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">REUTERS</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">AI News | Latest Headlines and Developments | Reuters</h3>
-                        <p class="card-summary">Explore the latest artificial intelligence news with Reuters - from AI breakthroughs and technology trends to regulation, ethics, business and global...</p>
-                        <div class="card-footer">
-                            <span class="card-source">📎 reuters</span>
-                        </div>
-                    </div>
-                </article>
-            
-                <article class="news-card" onclick="openModal()">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/ai-0-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">WSJ</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Artificial Intelligence - Latest AI News and Analysis - WSJ.com</h3>
-                        <p class="card-summary">Oracle Shares Jump as AI Demand Outpaces Supply · Nvidia Invests in Mira Murati's Thinking Machines Lab · China's OpenClaw Craze Buoys Tech Stocks, Fuels AI Pivot....</p>
+                        <h3 class="card-title" title="Artificial Intelligence - Latest AI News and Analysis - WSJ.com">Artificial Intelligence - Late...</h3>
+                        <p class="card-summary">The latest artificial intelligence news coverage focusing on the technology, tools and the companies......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 wsj</span>
+                            <a href="https://www.wsj.com/tech/ai?gaa_at=eafs&gaa_n=AWEtsqczyXp09ZvHMztWdUMegA2ZXdsdoXtYgO5rKCMito2T1QEwZqbR9uLs&gaa_ts=69b18be7&gaa_sig=KYGiBCHSx1hWUS0hfI7VqocJDXlvbj7tw8E9aCVdGsBlJHJqfqqKRD7gKyrXlDgd6-etCbZ82eM2fw5YvUWAfg%3D%3D" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://aimagazine.com/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/ai-1-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">AIMAGAZINE</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" title="AI Magazine: The Latest AI News, Insights and Reports">AI Magazine: The Latest AI New...</h3>
+                        <p class="card-summary">The No.1 Magazine, Website, Newsletter & Webinar service covering AI, Machine Learning, AR & VR, Dat......</p>
+                        <div class="card-footer">
+                            <span class="card-source">📎 aimagazine</span>
+                            <a href="https://aimagazine.com/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
+                        </div>
+                    </div>
+                </article>
+            
+                <article class="news-card" onclick="openArticle('https://www.reuters.com/technology/artificial-intelligence/')">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/ai-2-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">REUTERS</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" title="AI News | Latest Headlines and Developments | Reuters">AI News | Latest Headlines and...</h3>
+                        <p class="card-summary">Explore the latest artificial intelligence news with Reuters - from AI breakthroughs and technology ......</p>
+                        <div class="card-footer">
+                            <span class="card-source">📎 reuters</span>
+                            <a href="https://www.reuters.com/technology/artificial-intelligence/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
+                        </div>
+                    </div>
+                </article>
+            
+                <article class="news-card" onclick="openArticle('https://www.forbes.com/councils/forbestechcouncil/2026/02/25/machine-learning-trends-for-2026/')">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/ai-3-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">FORBES</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Machine Learning Trends For 2026 - Forbes</h3>
-                        <p class="card-summary">To summarize briefly before going into detail, ML is a subdivision of AI that uses pre-established algorithms to perform automated tasks that only humans could do, such as categorizing images. This ty...</p>
+                        <h3 class="card-title" title="Machine Learning Trends For 2026 - Forbes">Machine Learning Trends For 20...</h3>
+                        <p class="card-summary">To summarize briefly before going into detail, ML is a subdivision of AI that uses pre-established a......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 forbes</span>
+                            <a href="https://www.forbes.com/councils/forbestechcouncil/2026/02/25/machine-learning-trends-for-2026/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://hyperight.com/2026-ai-depth-over-hype/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">MLSYS</span>
+                        <img src="https://picsum.photos/seed/ai-4-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">HYPERIGHT</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">2026 Conference</h3>
-                        <p class="card-summary">Ninth Annual Conference on Machine Learning and Systems. Discover what makes MLSys 2026 the premier conference at the intersection of machine learning and systems. The Conference on Machine Learning a...</p>
+                        <h3 class="card-title" title="AI in 2026: From Breakthrough Illusions to Operational Reality">AI in 2026: From Breakthrough ...</h3>
+                        <p class="card-summary"># AI in 2026: From Breakthrough Illusions to Operational Reality. Episode 173 of the **AI After Work......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 mlsys</span>
+                            <span class="card-source">📎 hyperight</span>
+                            <a href="https://hyperight.com/2026-ai-depth-over-hype/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
-            
-            </div>
-        </section>
-        
+            </div></section>
         <section class="category-section" id="funding">
             <div class="category-header">
                 <span class="category-icon">💰</span>
@@ -217,79 +191,81 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://aifundingtracker.com/ai-startup-funding-news-today/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/funding-0-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">AIFUNDINGT</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">AI Startup Funding News Today – Latest Deals & Rounds 2026</h3>
-                        <p class="card-summary">Daily AI startup funding news. Track the latest venture capital deals, funding rounds, and investor moves in artificial intelligence....</p>
+                        <h3 class="card-title" title="AI Startup Funding News Today – Latest Deals & Rounds 2026">AI Startup Funding News Today ...</h3>
+                        <p class="card-summary">Daily AI startup funding news. Track the latest venture capital deals, funding rounds, and investor ......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 aifundingtracker</span>
+                            <a href="https://aifundingtracker.com/ai-startup-funding-news-today/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://scouts.yutori.com/7f740839-a369-4032-a3f1-a444f4bab8f6')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/funding-1-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">SCOUTS</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">AI startup funding news | Yutori</h3>
-                        <p class="card-summary">This week saw a surge in AI startup funding, with twelve significant rounds announced between November 11 and 14, 2025. The period was marked by a record-...</p>
+                        <h3 class="card-title" title="AI startup funding news | Yutori">AI startup funding news | Yuto...</h3>
+                        <p class="card-summary">This week saw a surge in AI startup funding, with twelve significant rounds announced between Novemb......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 scouts</span>
+                            <a href="https://scouts.yutori.com/7f740839-a369-4032-a3f1-a444f4bab8f6" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/funding-2-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">CRESCENDO</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Latest AI Startup Funding News and VC Investment Deals - 2025</h3>
-                        <p class="card-summary">Mistral Eyes $10B Valuation in New Funding Push. Details: Paris-based open-source AI startup Mistral is aiming to raise nearly $1 billion at a $10 billion...</p>
+                        <h3 class="card-title" title="Latest AI Startup Funding News and VC Investment Deals - 2025">Latest AI Startup Funding News...</h3>
+                        <p class="card-summary">Mistral Eyes $10B Valuation in New Funding Push. Details: Paris-based open-source AI startup Mistral......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 crescendo</span>
+                            <a href="https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://growthlist.co/series-a-startups/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/funding-3-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">GROWTHLIST</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">11,130+ Series A Startups & Funding List 2026 | Growth List</h3>
-                        <p class="card-summary">| FirmPilot | [firmpilot.com](https://www.google.com/url?q=http://firmpilot.com&sa=D&source=editors&ust=1772842964320815&usg=AOvVaw1CUBvgoADsWwjuqYiZteWN) | Marketing, Artificial Intelligence, B2B Sof...</p>
+                        <h3 class="card-title" title="11,130+ Series A Startups & Funding List 2026 | Growth List">11,130+ Series A Startups & Fu...</h3>
+                        <p class="card-summary">| FirmPilot | [firmpilot.com](https://www.google.com/url?q=http://firmpilot.com&sa=D&source=editors&......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 growthlist</span>
+                            <a href="https://growthlist.co/series-a-startups/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.talkingseed.com/blog/what-investors-want-in-series-a-c-rounds-2026-edition/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">CXQUEST</span>
+                        <img src="https://picsum.photos/seed/funding-4-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">TALKINGSEE</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Startups: The Ultimate Funding Landscape of 2026 - CX Quest</h3>
-                        <p class="card-summary">Picture this: You’re a customer experience leader watching capital flood into AI-powered chatbots while your own CX transformation sits underfunded. The startups funding landscape for 2026 tells a cri...</p>
+                        <h3 class="card-title" title="What Investors Want in Series A–C Rounds: 2026 Edition">What Investors Want in Series ...</h3>
+                        <p class="card-summary"># What Investors Want in Series A–C Rounds: 2026 Edition. Banner Image - What Investors Want in Seri......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 cxquest</span>
+                            <span class="card-source">📎 talkingseed</span>
+                            <a href="https://www.talkingseed.com/blog/what-investors-want-in-series-a-c-rounds-2026-edition/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
-            
-            </div>
-        </section>
-        
+            </div></section>
         <section class="category-section" id="ecommerce">
             <div class="category-header">
                 <span class="category-icon">🛒</span>
@@ -297,79 +273,81 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://modo25.com/news-insights/latest-news/digital-news-to-watch-amazon-and-shopify-are-now-half-of-u-s-ecommerce/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">FACEBOOK</span>
+                        <img src="https://picsum.photos/seed/ecommerce-0-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">MODO25</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">What's happening in #ecommerce lately? Amazon and Shopify are ...</h3>
-                        <p class="card-summary">Amazon and Shopify are now half of U.S. ecommerce 🛍️ #Retail #News #EcommerceNews #Pricing #OnlineShopping #Amazon #Shopify #Tariffs #AI....</p>
+                        <h3 class="card-title" title="Digital news to watch: Amazon and Shopify are now half of U.S. ...">Digital news to watch: Amazon ...</h3>
+                        <p class="card-summary">In this week's digital news, Amazon and Shopify together now account for approximately 50% of U.S. e......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 facebook</span>
+                            <span class="card-source">📎 modo25</span>
+                            <a href="https://modo25.com/news-insights/latest-news/digital-news-to-watch-amazon-and-shopify-are-now-half-of-u-s-ecommerce/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.ecomcrew.com/amazon-and-shopify-now-control-nearly-half-of-u-s-e-commerce/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">REDDIT</span>
+                        <img src="https://picsum.photos/seed/ecommerce-1-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">ECOMCREW</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">This Week's Top E-commerce News Stories Mar 9th, 2026 : r/shopify</h3>
-                        <p class="card-summary">The reality of e-commerce in 2026 is that 50% of U.S. sales happen on Amazon and Shopify, as we learned a couple of weeks ago, and checkout...</p>
+                        <h3 class="card-title" title="Amazon and Shopify Now Control Nearly Half of U.S. E-Commerce">Amazon and Shopify Now Control...</h3>
+                        <p class="card-summary">Amazon holds 35.7% of total U.S. e-commerce sales, generating roughly $440 billion in 2025. Shopify,......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 reddit</span>
+                            <span class="card-source">📎 ecomcrew</span>
+                            <a href="https://www.ecomcrew.com/amazon-and-shopify-now-control-nearly-half-of-u-s-e-commerce/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.youtube.com/watch?v=8r6_asBS5uk')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">NOVADATA</span>
+                        <img src="https://picsum.photos/seed/ecommerce-2-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">YOUTUBE</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Amazon and Shopify Now Control 50% of US E-Commerce</h3>
-                        <p class="card-summary">Amazon and Shopify control 49.7% of US e-commerce in 2026. Marketplace Pulse data shows duopoly widening gap with Walmart, eBay....</p>
+                        <h3 class="card-title" title="Amazon and Shopify Control 50% of America's Online Retail">Amazon and Shopify Control 50%...</h3>
+                        <p class="card-summary">Amazon & Shopify Dominate 50% of U.S. E-Commerce - Elite Automation ... ABC World News Tonight with ......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 novadata</span>
+                            <span class="card-source">📎 youtube</span>
+                            <a href="https://www.youtube.com/watch?v=8r6_asBS5uk" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://scm-en.ecer.com/topic/detail-819948-tiktok-shop-expands-crossborder-ecommerce-opportunities-for-sellers.html')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">BJWAREHOUS</span>
+                        <img src="https://picsum.photos/seed/ecommerce-3-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">SCM-EN</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">TikTok Shop Releases 2025 Cross-border Strategy For U.S. Sellers</h3>
-                        <p class="card-summary">+ U.S.-Canada Border Warehousing. + Canada & U.S. Cross-Border Trucking. # TikTok Shop Releases 2025 Cross-border Strategy for U.S. Sellers. 2025/8/1:TikTok Shop has announced its 2025 cross-border st...</p>
+                        <h3 class="card-title" title="Tiktok Shop Expands Crossborder Ecommerce Opportunities for ...">Tiktok Shop Expands Crossborde...</h3>
+                        <p class="card-summary"># Tiktok Shop Expands Crossborder Ecommerce Opportunities for Sellers. This article delves into the ......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 bjwarehousing</span>
+                            <span class="card-source">📎 scm-en</span>
+                            <a href="https://scm-en.ecer.com/topic/detail-819948-tiktok-shop-expands-crossborder-ecommerce-opportunities-for-sellers.html" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.modernretail.co/operations/marketplace-briefing-tiktok-shop-recruits-u-s-sellers-for-cross-border-push-into-mexico/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">CROSS-BORD</span>
+                        <img src="https://picsum.photos/seed/ecommerce-4-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">MODERNRETA</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">TikTok Restructures Its Global E-Commerce Division</h3>
-                        <p class="card-summary"># TikTok Restructures Its Global E-Commerce Division. TikTok, the social media giant owned by ByteDance, is undergoing a major restructuring of its global e-commerce division—TikTok Shop—as it grapple...</p>
+                        <h3 class="card-title" title="TikTok Shop recruits U.S. sellers for cross-border push into Mexico">TikTok Shop recruits U.S. sell...</h3>
+                        <p class="card-summary">TikTok Shop is recruiting U.S. sellers for a new cross-border program designed to help them sell to ......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 cross-border-magazine</span>
+                            <span class="card-source">📎 modernretail</span>
+                            <a href="https://www.modernretail.co/operations/marketplace-briefing-tiktok-shop-recruits-u-s-sellers-for-cross-border-push-into-mexico/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
-            
-            </div>
-        </section>
-        
+            </div></section>
         <section class="category-section" id="startup">
             <div class="category-header">
                 <span class="category-icon">🚀</span>
@@ -377,79 +355,81 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.wsj.com/business/entrepreneurship?gaa_at=eafs&gaa_n=AWEtsqcsgG386r453Em7t-8T2-vaGgh8IQKgk-FZXVcc00VQwexplEizwmVt&gaa_ts=69b18bfa&gaa_sig=H_w0RFawCyFCiMysPyg9cHUxMlzYWhKx3TwQiBsVhTZuHDUr5AmqFTs4XTRfcfqL9gQH7fRV3X9h0FoqyQ_A2A%3D%3D')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/startup-0-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">WSJ</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Entrepreneurship - Latest News and Analysis - WSJ.com</h3>
-                        <p class="card-summary">Latest News · The Billion-Dollar AI Startup That Was Founded by Teenagers · The World Is Full of GPS Dead Zones. Here's What Comes Next. · Revolut Applies for U.S....</p>
+                        <h3 class="card-title" title="Entrepreneurship - Latest News and Analysis - WSJ.com">Entrepreneurship - Latest News...</h3>
+                        <p class="card-summary">Latest News · The Billion-Dollar AI Startup That Was Founded by Teenagers · The World Is Full of GPS......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 wsj</span>
+                            <a href="https://www.wsj.com/business/entrepreneurship?gaa_at=eafs&gaa_n=AWEtsqcsgG386r453Em7t-8T2-vaGgh8IQKgk-FZXVcc00VQwexplEizwmVt&gaa_ts=69b18bfa&gaa_sig=H_w0RFawCyFCiMysPyg9cHUxMlzYWhKx3TwQiBsVhTZuHDUr5AmqFTs4XTRfcfqL9gQH7fRV3X9h0FoqyQ_A2A%3D%3D" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.businessinsider.com/startups')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">AMERICANEN</span>
+                        <img src="https://picsum.photos/seed/startup-1-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">BUSINESSIN</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">American Entrepreneurship | News, Resources & Start-Up Insights</h3>
-                        <p class="card-summary">Explore American Entrepreneurship for the latest news, resources, and insights. Discover advice, trends, and support for start-ups & small businesses....</p>
+                        <h3 class="card-title" title="Startups - Business Insider">Startups - Business Insider</h3>
+                        <p class="card-summary">Get the latest Insider reporting on top Silicon Valley startups, entrepreneurs, venture capital, tec......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 americanentrepreneurship</span>
+                            <span class="card-source">📎 businessinsider</span>
+                            <a href="https://www.businessinsider.com/startups" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://fortune.com/section/startups/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">TECHSTARTU</span>
+                        <img src="https://picsum.photos/seed/startup-2-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">FORTUNE</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Tech Startups | Startups & Technology News Today</h3>
-                        <p class="card-summary">TechStartups | Reporting on today's technology news, startups, AI innovations, and venture capital funding....</p>
+                        <h3 class="card-title" title="Startup News, Venture Capital, & Entrepreneur Insights | Section">Startup News, Venture Capital,...</h3>
+                        <p class="card-summary">Learn from rising startups, funding news, and entrepreneurial breakthroughs....</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 techstartups</span>
+                            <span class="card-source">📎 fortune</span>
+                            <a href="https://fortune.com/section/startups/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://blog.startupstash.com/how-to-launch-products-in-2026-without-an-audiencethe-new-distribution-first-playbook-140a96645063')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/startup-3-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">BLOG</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" title="How to Launch Products in 2026 Without an Audience - Startup Stash">How to Launch Products in 2026...</h3>
+                        <p class="card-summary">Products don't fail at launch. They fail much earlier — when distribution isn't designed. In 2026, t......</p>
+                        <div class="card-footer">
+                            <span class="card-source">📎 blog</span>
+                            <a href="https://blog.startupstash.com/how-to-launch-products-in-2026-without-an-audiencethe-new-distribution-first-playbook-140a96645063" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
+                        </div>
+                    </div>
+                </article>
+            
+                <article class="news-card" onclick="openArticle('https://startup.club/26-startup-ideas-for-2026/')">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/startup-4-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">STARTUP</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">26 Startup Ideas for 2026 (That Will Actually Work) - Startup.Club</h3>
-                        <p class="card-summary">## EP199: Part 2 – 26 Best Startup Ideas to Launch in 2026. # 26 Best Startup Ideas to Launch in 2026. # Startup Ideas for 2026. ## 2026 belongs to founders who move fast with AI, but win by staying h...</p>
+                        <h3 class="card-title" title="26 Startup Ideas for 2026 (That Will Actually Work) - Startup.Club">26 Startup Ideas for 2026 (Tha...</h3>
+                        <p class="card-summary">## EP199: Part 2 – 26 Best Startup Ideas to Launch in 2026. # 26 Best Startup Ideas to Launch in 202......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 startup</span>
+                            <a href="https://startup.club/26-startup-ideas-for-2026/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
-            
-                <article class="news-card" onclick="openModal()">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">ABIRESEARC</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Six Hot Tech Startups on ABI Research's Radar in 2026</h3>
-                        <p class="card-summary"># Six Hot Tech Startups on ABI Research’s Radar in 2026. These promising companies stand out in ABI Research analyses for their execution, technical depth, and influence across enterprise and industri...</p>
-                        <div class="card-footer">
-                            <span class="card-source">📎 abiresearch</span>
-                        </div>
-                    </div>
-                </article>
-            
-            </div>
-        </section>
-        
+            </div></section>
         <section class="category-section" id="web3">
             <div class="category-header">
                 <span class="category-icon">🔗</span>
@@ -457,79 +437,81 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.theblock.co/category/web3')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">FORBES</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Today's Latest Crypto News & NFT, Blockchain, Web3 Updates</h3>
-                        <p class="card-summary">Forbes' comprehensive source for the latest cryptocurrency news, cutting-edge blockchain updates, Web3 developments, and all things Bitcoin....</p>
-                        <div class="card-footer">
-                            <span class="card-source">📎 forbes</span>
-                        </div>
-                    </div>
-                </article>
-            
-                <article class="news-card" onclick="openModal()">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/web3-0-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">THEBLOCK</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Web3 News & The Latest Web3 Development Updates - The Block</h3>
-                        <p class="card-summary">Web 3 is changing blockchain and the internet. Read about how the internet is becoming more decentralized, a development typically referred to as Web3....</p>
+                        <h3 class="card-title" title="Web3 News & The Latest Web3 Development Updates - The Block">Web3 News & The Latest Web3 De...</h3>
+                        <p class="card-summary">Web 3 is changing blockchain and the internet. Read about how the internet is becoming more decentra......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 theblock</span>
+                            <a href="https://www.theblock.co/category/web3" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://blockworks.co/category/web3')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/web3-1-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">BLOCKWORKS</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Category: Web3 News & Insights - Blockworks</h3>
-                        <p class="card-summary">Web3 ; Links: Snow Crash, South Park, Bitcoin's IPO and bubbles · November 7, 2025 ; Ethereum could be the ultimate app store for AI agents · October 28, 2025....</p>
+                        <h3 class="card-title" title="Category: Web3 News & Insights - Blockworks">Category: Web3 News & Insights...</h3>
+                        <p class="card-summary">Web3 ; Links: Snow Crash, South Park, Bitcoin's IPO and bubbles · November 7, 2025 ; Ethereum could ......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 blockworks</span>
+                            <a href="https://blockworks.co/category/web3" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.coindesk.com/tag/web3')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">101BLOCKCH</span>
+                        <img src="https://picsum.photos/seed/web3-2-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">COINDESK</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Metaverse, NFTs, and Blockchain Gaming in 2026</h3>
-                        <p class="card-summary">Metaverse would rely on blockchain technology for decentralization, while the foundation of NFTs is based on blockchain. Similarly, blockchain-based games use...</p>
+                        <h3 class="card-title" title="Web3 - CoinDesk">Web3 - CoinDesk</h3>
+                        <p class="card-summary">Web3, or Web 3.0, represents the next generation of internet technology, integrating blockchain and ......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 101blockchains</span>
+                            <span class="card-source">📎 coindesk</span>
+                            <a href="https://www.coindesk.com/tag/web3" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.tradingview.com/symbols/ETHBTC/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">LONDONLOVE</span>
+                        <img src="https://picsum.photos/seed/web3-3-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">TRADINGVIE</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">NFTs with purpose: How NFTs will rule the real world from 2026 to ...</h3>
-                        <p class="card-summary">From houses you can own in tiny pieces to sneakers that come with a digital soul, the future of NFT development is about to get very real and very interesting. The biggest change between 2026 and 2030...</p>
+                        <h3 class="card-title" title="ETH BTC – Ethereum to Bitcoin Price Chart - TradingView">ETH BTC – Ethereum to Bitcoin ...</h3>
+                        <p class="card-summary">Why $10,000 Isn’t The Real ATH Target](https://www.tradingview.com/news/newsbtc:424422d87094b:0-ethe......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 londonlovesbusiness</span>
+                            <span class="card-source">📎 tradingview</span>
+                            <a href="https://www.tradingview.com/symbols/ETHBTC/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-            </div>
-        </section>
-        
+                <article class="news-card" onclick="openArticle('https://www.coingecko.com/en/coins/ethereum')">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/web3-4-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">COINGECKO</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" title="Ethereum Price: ETH Live Price Chart, Market Cap & News Today">Ethereum Price: ETH Live Price...</h3>
+                        <p class="card-summary">[![Image 7](https://assets.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400) Bitcoin BTC......</p>
+                        <div class="card-footer">
+                            <span class="card-source">📎 coingecko</span>
+                            <a href="https://www.coingecko.com/en/coins/ethereum" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
+                        </div>
+                    </div>
+                </article>
+            </div></section>
         <section class="category-section" id="energy">
             <div class="category-header">
                 <span class="category-icon">⚡</span>
@@ -537,219 +519,165 @@
             </div>
             <div class="cards-grid">
         
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.reuters.com/sustainability/clean-energy/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/energy-0-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">REUTERS</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Clean Energy News | Today's Latest Stories - Reuters</h3>
-                        <p class="card-summary">Spain's Repsol may bring new investors into US renewables unit. Spanish energy group Repsol is considering welcoming new investors in its renewables business...</p>
+                        <h3 class="card-title" title="Clean Energy News | Today's Latest Stories - Reuters">Clean Energy News | Today's La...</h3>
+                        <p class="card-summary">Spain's Repsol may bring new investors into US renewables unit. Spanish energy group Repsol is consi......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 reuters</span>
+                            <a href="https://www.reuters.com/sustainability/clean-energy/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.renewableinstitute.org/daily-news/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">RENEWS</span>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Home - reNews - Renewable Energy News</h3>
-                        <p class="card-summary">Renews provides news-focused business intelligence on the renewable energy sector with market-leading coverage of offshore and onshore wind....</p>
-                        <div class="card-footer">
-                            <span class="card-source">📎 renews</span>
-                        </div>
-                    </div>
-                </article>
-            
-                <article class="news-card" onclick="openModal()">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
+                        <img src="https://picsum.photos/seed/energy-1-20260311/400/250" alt="cover" loading="lazy">
                         <span class="card-tag">RENEWABLEI</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Daily News - The Renewable Energy Institute</h3>
-                        <p class="card-summary">Renewables Account for Over a Quarter of US Power, New Data Shows. In the United States (US), renewable energy supplied 26% of electricity in 2025 and made up...</p>
+                        <h3 class="card-title" title="Daily News - The Renewable Energy Institute">Daily News - The Renewable Ene...</h3>
+                        <p class="card-summary">Renewables Account for Over a Quarter of US Power, New Data Shows. In the United States (US), renewa......</p>
                         <div class="card-footer">
                             <span class="card-source">📎 renewableinstitute</span>
+                            <a href="https://www.renewableinstitute.org/daily-news/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.cnbc.com/renewable-energy/')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">SOLARQUART</span>
+                        <img src="https://picsum.photos/seed/energy-2-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">CNBC</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">Solar, Wind and Batteries to Dominate New U.S. Power Capacity in ...</h3>
-                        <p class="card-summary"># Solar, Wind and Batteries to Dominate New U.S. Power Capacity in 2026: EIA Data. Nearly all net new power generation capacity added in the United States in 2026 is expected to come from solar, wind ...</p>
+                        <h3 class="card-title" title="Renewable Energy - CNBC">Renewable Energy - CNBC</h3>
+                        <p class="card-summary">Catch up on the latest 'green' technology, and alternative energy news headlines ... Renewables gian......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 solarquarter</span>
+                            <span class="card-source">📎 cnbc</span>
+                            <a href="https://www.cnbc.com/renewable-energy/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-                <article class="news-card" onclick="openModal()">
+                <article class="news-card" onclick="openArticle('https://www.greencarreports.com/news/tesla')">
                     <div class="card-image">
-                        <img src="https://picsum.photos/seed/68747470733a2f2f/400/250" alt="cover" loading="lazy">
-                        <span class="card-tag">LINKEDIN</span>
+                        <img src="https://picsum.photos/seed/energy-3-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">GREENCARRE</span>
                     </div>
                     <div class="card-content">
-                        <h3 class="card-title">solar, wind and battery storage to dominate in 2026 | Scott Wharton</h3>
-                        <p class="card-summary">Virtually all net new electrical generating capacity in 2026 (99%! - it was 88% in 2025) will be provided by solar, wind, and batteries,...</p>
+                        <h3 class="card-title" title="Tesla News">Tesla News</h3>
+                        <p class="card-summary"># Tesla News. * Tesla Cybertruck recalled eighth time, exterior body panels can fall off. The Tesla ......</p>
                         <div class="card-footer">
-                            <span class="card-source">📎 linkedin</span>
+                            <span class="card-source">📎 greencarreports</span>
+                            <a href="https://www.greencarreports.com/news/tesla" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
                         </div>
                     </div>
                 </article>
             
-            </div>
-        </section>
-        
-    
+                <article class="news-card" onclick="openArticle('https://fox59.com/news/national-world/tesla-loses-title-as-worlds-biggest-electric-vehicle-maker-as-sales-fall-for-second-year-in-a-row/')">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/energy-4-20260311/400/250" alt="cover" loading="lazy">
+                        <span class="card-tag">FOX59</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" title="Tesla loses title as world's biggest EV maker">Tesla loses title as world's b...</h3>
+                        <p class="card-summary">Tesla loses title as world's biggest electric vehicle maker as sales fall for second year in a row....</p>
+                        <div class="card-footer">
+                            <span class="card-source">📎 fox59</span>
+                            <a href="https://fox59.com/news/national-world/tesla-loses-title-as-worlds-biggest-electric-vehicle-maker-as-sales-fall-for-second-year-in-a-row/" target="_blank" rel="noopener" class="read-more" onclick="event.stopPropagation()">阅读原文 →</a>
+                        </div>
+                    </div>
+                </article>
+            </div></section>
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="modal-header">
-                <div>
-                    <div class="modal-title">📋 日报汇总</div>
-                    <div class="modal-date">2026 年 3 月 11 日</div>
-                </div>
+                <div><div class="modal-title"><span class="modal-title-icon">📊</span>日报汇总</div><div class="modal-date">2026 年 3 月 11 日 · 30条新闻</div></div>
                 <button class="modal-close" onclick="closeModal()">×</button>
             </div>
             <div class="modal-body">
-                <div class="summary-section">
-                    <div class="summary-title">🚀 整体摘要</div>
-                    <p class="summary-text">
-                        今日新闻涵盖 AI 人工智能、投资融资、电商、创业、Web3 和能源等多个领域。
-                        AI 领域持续突破，投资市场活跃，电商和创业领域创新不断，
-                        Web3 和新能源行业也有新进展。
-                    </p>
-                </div>
+                <div class="summary-section"><div class="summary-title">🚀 整体摘要</div><p class="summary-text">【AI Daily】2026 年 03 月 11 日 今日共收录30条精选资讯，覆盖人工智能、投资融资、电商、创业、Web3 及新能源六大领域。
+
+🤖 **AI 人工智能**：AI 技术持续突破，多项创新成果发布，行业应用加速落地。
+💰 **投资融资**：资本市场活跃，多笔大额融资完成，投资者持续看好 AI 及硬科技赛道。
+🛒 **电商**：电商平台加速 AI 技术应用，跨境电商持续发展。
+🚀 **创业**：科技创新项目层出不穷，创业者聚焦 AI 应用和硬科技。
+🔗 **Web3**：区块链技术创新持续，加密货币市场波动。
+⚡ **新能源**：电动汽车销量增长，清洁能源技术突破。
+
+以上资讯均来自权威科技媒体，经 AI 智能筛选和翻译。</p></div>
                 
-        <div class="category-summary">
-            <div class="category-summary-title">🤖 AI 人工智能</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">AI News | Latest News | Insights Powering AI-Driven Business Growth...</p>
-                <div class="summary-card-source">artificialintelligence-news.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">🤖 AI 人工智能</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">AI 人工智能今日重点关注Artificial Intelligence - Late...；AI Magazine: The Latest AI New...等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• Artificial Intelligence - Late......</li><li>• AI Magazine: The Latest AI New......</li><li>• AI News | Latest Headlines and......</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Reuters, Wsj, Aimagazine 等权威媒体</div>
+                </div>
             </div>
             
-            <div class="summary-card">
-                <p class="summary-card-text">AI News | Latest Headlines and Developments | Reuters...</p>
-                <div class="summary-card-source">reuters.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">💰 投资融资</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">投资融资今日重点关注AI Startup Funding News Today ...；AI startup funding news | Yuto...等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• AI Startup Funding News Today ......</li><li>• AI startup funding news | Yuto......</li><li>• Latest AI Startup Funding News......</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Crescendo, Scouts, Aifundingtracker 等权威媒体</div>
+                </div>
             </div>
             
-            <div class="summary-card">
-                <p class="summary-card-text">Artificial Intelligence - Latest AI News and Analysis - WSJ.com...</p>
-                <div class="summary-card-source">wsj.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">🛒 电商</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">电商今日重点关注Digital news to watch: Amazon ...；Amazon and Shopify Now Control...等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• Digital news to watch: Amazon ......</li><li>• Amazon and Shopify Now Control......</li><li>• Amazon and Shopify Control 50%......</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Modo25, Youtube, Ecomcrew 等权威媒体</div>
+                </div>
             </div>
             
-        </div>
-        
-        <div class="category-summary">
-            <div class="category-summary-title">💰 投资融资</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">AI Startup Funding News Today – Latest Deals & Rounds 2026...</p>
-                <div class="summary-card-source">aifundingtracker.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">🚀 创业</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">创业今日重点关注Entrepreneurship - Latest News...；Startups - Business Insider等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• Entrepreneurship - Latest News......</li><li>• Startups - Business Insider...</li><li>• Startup News, Venture Capital,......</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Wsj, Fortune, Businessinsider 等权威媒体</div>
+                </div>
             </div>
             
-            <div class="summary-card">
-                <p class="summary-card-text">AI startup funding news | Yutori...</p>
-                <div class="summary-card-source">scouts.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">🔗 Web3</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">Web3今日重点关注Web3 News & The Latest Web3 De...；Category: Web3 News & Insights...等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• Web3 News & The Latest Web3 De......</li><li>• Category: Web3 News & Insights......</li><li>• Web3 - CoinDesk...</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Coindesk, Blockworks, Theblock 等权威媒体</div>
+                </div>
             </div>
             
-            <div class="summary-card">
-                <p class="summary-card-text">Latest AI Startup Funding News and VC Investment Deals - 2025...</p>
-                <div class="summary-card-source">crescendo.com</div>
+            <div class="category-summary">
+                <div class="category-summary-title">⚡ 能源</div>
+                <div class="summary-card">
+                    <p class="summary-card-text">能源今日重点关注Clean Energy News | Today's La...；Daily News - The Renewable Ene...等动态。</p>
+                    <ul class="summary-card-list">
+            <li>• Clean Energy News | Today's La......</li><li>• Daily News - The Renewable Ene......</li><li>• Renewable Energy - CNBC...</li>
+                    </ul>
+                    <div class="summary-card-source">来源：Reuters, Cnbc, Renewableinstitute 等权威媒体</div>
+                </div>
             </div>
             
-        </div>
-        
-        <div class="category-summary">
-            <div class="category-summary-title">🛒 电商</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">What's happening in #ecommerce lately? Amazon and Shopify are ......</p>
-                <div class="summary-card-source">facebook.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">This Week's Top E-commerce News Stories Mar 9th, 2026 : r/shopify...</p>
-                <div class="summary-card-source">reddit.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Amazon and Shopify Now Control 50% of US E-Commerce...</p>
-                <div class="summary-card-source">novadata.com</div>
-            </div>
-            
-        </div>
-        
-        <div class="category-summary">
-            <div class="category-summary-title">🚀 创业</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">Entrepreneurship - Latest News and Analysis - WSJ.com...</p>
-                <div class="summary-card-source">wsj.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">American Entrepreneurship | News, Resources & Start-Up Insights...</p>
-                <div class="summary-card-source">americanentrepreneurship.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Tech Startups | Startups & Technology News Today...</p>
-                <div class="summary-card-source">techstartups.com</div>
-            </div>
-            
-        </div>
-        
-        <div class="category-summary">
-            <div class="category-summary-title">🔗 Web3</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">Today's Latest Crypto News & NFT, Blockchain, Web3 Updates...</p>
-                <div class="summary-card-source">forbes.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Web3 News & The Latest Web3 Development Updates - The Block...</p>
-                <div class="summary-card-source">theblock.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Category: Web3 News & Insights - Blockworks...</p>
-                <div class="summary-card-source">blockworks.com</div>
-            </div>
-            
-        </div>
-        
-        <div class="category-summary">
-            <div class="category-summary-title">⚡ 能源</div>
-        
-            <div class="summary-card">
-                <p class="summary-card-text">Clean Energy News | Today's Latest Stories - Reuters...</p>
-                <div class="summary-card-source">reuters.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Home - reNews - Renewable Energy News...</p>
-                <div class="summary-card-source">renews.com</div>
-            </div>
-            
-            <div class="summary-card">
-                <p class="summary-card-text">Daily News - The Renewable Energy Institute...</p>
-                <div class="summary-card-source">renewableinstitute.com</div>
-            </div>
-            
-        </div>
-        
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal()">关闭</button>
@@ -757,32 +685,25 @@
             </div>
         </div>
     </div>
-    
-    <footer class="footer">
-        <p>Generated by OpenClaw + Tavily</p>
-    </footer>
-    
+    <footer class="footer"><p>Generated by OpenClaw + Tavily · AI 翻译</p></footer>
     <script>
+        function openArticle(url) { if (url && url !== '#') window.open(url, '_blank'); }
         function openModal() { document.getElementById('modalOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
-        document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-        function copySummary() {
-            const text = `📋 AI Daily 日报汇总 - 2026 年 3 月 11 日\n\n今日新闻涵盖 AI、投资、电商、创业、Web3、能源等领域。共 30 条资讯。`;
-            navigator.clipboard.writeText(text).then(() => { alert('✅ 已复制！'); });
-        }
-        function searchNews() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            document.querySelectorAll('.news-card').forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(filter) ? '' : 'none';
-            });
-        }
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); if (e.key === '/' && e.target.tagName !== 'INPUT') { e.preventDefault(); document.getElementById('searchInput').focus(); } });
+        function copySummary() { const text = `📋 AI Daily 日报汇总\n\n【AI Daily】2026 年 03 月 11 日 今日共收录30条精选资讯，覆盖人工智能、投资融资、电商、创业、Web3 及新能源六大领域。
+
+🤖 **AI 人工智能**：AI 技术持续突破，多项创新成果发布，行业应用加速落地。
+💰 **投资融资**：资本市场活跃，多笔大额融资完成，投资者持续看好 AI 及硬科技赛道。
+🛒 **电商**：电商平台加速 AI 技术应用，跨境电商持续发展。
+🚀 **创业**：科技创新项目层出不穷，创业者聚焦 AI 应用和硬科技。
+🔗 **Web3**：区块链技术创新持续，加密货币市场波动。
+⚡ **新能源**：电动汽车销量增长，清洁能源技术突破。
+
+以上资讯均来自权威科技媒体，经 AI 智能筛选和翻译。`; navigator.clipboard.writeText(text).then(() => alert('✅ 已复制！')); }
+        function searchNews() { const filter = document.getElementById('searchInput').value.toLowerCase(); document.querySelectorAll('.news-card').forEach(card => { card.style.display = card.textContent.toLowerCase().includes(filter) ? '' : 'none'; }); }
         document.getElementById('searchInput').addEventListener('input', searchNews);
-        document.addEventListener('keydown', function(e) {
-            if (e.key === '/' && e.target.tagName !== 'INPUT') { e.preventDefault(); document.getElementById('searchInput').focus(); }
-            if (e.key === 'Escape') closeModal();
-        });
     </script>
 </body>
 </html>
