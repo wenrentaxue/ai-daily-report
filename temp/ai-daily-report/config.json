@@ -1,0 +1,23 @@
+{
+  "name": "AI Daily Report",
+  "description": "每日 AI 新闻自动汇总",
+  "schedule": "0 8 * * *",
+  "timezone": "Asia/Shanghai",
+  "search_queries": [
+    "artificial intelligence AI news today latest",
+    "AI machine learning breakthrough research 2026",
+    "AI startup funding investment news",
+    "AI product launch new technology"
+  ],
+  "max_results": 10,
+  "language": "zh-CN",
+  "output": {
+    "format": "html",
+    "archive": true
+  },
+  "github": {
+    "repo": "wenrentaxue/ai-daily-report",
+    "branch": "main",
+    "pages_url": "https://wenrentaxue.github.io/ai-daily-report/"
+  }
+}
